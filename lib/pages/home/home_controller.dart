@@ -29,6 +29,8 @@ class HomeController extends GetxController {
     params['page'] = currentPage.toString();
     var result = await api.getAllPhotos(params);
 
+    developer.log('cached: $result');
+
     if (result != null) {
       photosList.value = result;
       isLoading.value = false;
