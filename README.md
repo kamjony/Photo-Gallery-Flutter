@@ -1,16 +1,12 @@
 # photogallery
 
-A new Flutter project.
+This flutter project is a Photo Gallery App using GetX State Management.
 
-## Getting Started
+Features:
+1. Users have infinite scroll to look and find any images he/she may like.
+2. Users can click an image and view it fullscreen.
+3. Users can download the image as jpg to their phone's gallery.
+4. Users can share image link to other apps such as email or text or messenger.
+5. API responses are cached.
+6. Images are cached.
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
