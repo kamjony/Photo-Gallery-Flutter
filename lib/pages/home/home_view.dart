@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:get/get.dart';
@@ -33,8 +34,11 @@ class HomeView extends StatelessWidget {
                             _controller.photosList[index].links!.download
                           ]);
                         },
-                        child: Image.network(
-                            '${_controller.photosList[index].urls!.thumb}'));
+                        child: CachedNetworkImage(
+                          imageUrl: '${_controller.photosList[index].urls!.thumb}',
+                          placeholder: (context, url) => const Center(child: CircularProgressIndicator()),
+                          errorWidget: (context, url, error) => const Icon(Icons.error),
+                        ));
                   },
                 )
               : const Center(child: CircularProgressIndicator()),

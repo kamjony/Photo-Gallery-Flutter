@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:photogallery/pages/details/details_controller.dart';
@@ -16,29 +17,41 @@ class DetailsView extends StatelessWidget {
       body: Stack(
         alignment: Alignment.bottomCenter,
         children: [
-          Image.network(
-            _controller.imgUrl!,
+          CachedNetworkImage(
+            imageUrl: _controller.imgUrl!,
             fit: BoxFit.contain,
             height: double.infinity,
             width: double.infinity,
             alignment: Alignment.center,
+            placeholder: (context, url) => const Center(child: CircularProgressIndicator()),
+            errorWidget: (context, url, error) => const Icon(Icons.error),
           ),
           Padding(
             padding: const EdgeInsets.only(bottom: 20),
             child: GestureDetector(
               onTap: () {
-                Get.snackbar('Image Download', 'Image Downloading in progres..', snackPosition: SnackPosition.BOTTOM);
+                Get.snackbar('Image Download', 'Image Downloading in progress..', snackPosition: SnackPosition.BOTTOM);
                 _controller.downloadImage();
               },
-              child: Row(
-                mainAxisSize: MainAxisSize.max,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: const [
-                  Icon(Icons.download),
-                  SizedBox(width: 5,),
-                  Text('Download'),
-                ],
+              child: Container(
+                padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(15),
+                    color: Colors.white
+                ),
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: const [
+                    Icon(Icons.download, size: 18,),
+                    SizedBox(width: 8),
+                    Text('Download', style: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.w500
+                    )),
+                  ],
+                ),
               ),
             ),
           )
