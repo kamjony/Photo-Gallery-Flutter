@@ -3,6 +3,8 @@ import 'package:get/get.dart';
 import 'package:image_downloader/image_downloader.dart';
 import 'dart:developer' as developer;
 
+import 'package:share_plus/share_plus.dart';
+
 class DetailsController extends GetxController{
 
   String? imageId;
@@ -38,6 +40,10 @@ class DetailsController extends GetxController{
     } on PlatformException catch (e) {
       developer.log(e.toString());
     }
+  }
+
+  void share() {
+    Share.share('Check out this image from unsplash: $imgUrl');
   }
 
 }

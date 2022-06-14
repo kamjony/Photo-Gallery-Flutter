@@ -26,34 +26,67 @@ class DetailsView extends StatelessWidget {
             placeholder: (context, url) => const Center(child: CircularProgressIndicator()),
             errorWidget: (context, url, error) => const Icon(Icons.error),
           ),
-          Padding(
-            padding: const EdgeInsets.only(bottom: 20),
-            child: GestureDetector(
-              onTap: () {
-                Get.snackbar('Image Download', 'Image Downloading in progress..', snackPosition: SnackPosition.BOTTOM);
-                _controller.downloadImage();
-              },
-              child: Container(
-                padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(15),
-                    color: Colors.white
-                ),
-                child: Row(
-                  mainAxisSize: MainAxisSize.min,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: const [
-                    Icon(Icons.download, size: 18,),
-                    SizedBox(width: 8),
-                    Text('Download', style: TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.w500
-                    )),
-                  ],
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(bottom: 20),
+                child: GestureDetector(
+                  onTap: () {
+                    _controller.share();
+                  },
+                  child: Container(
+                    padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(15),
+                        color: Colors.white
+                    ),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: const [
+                        Icon(Icons.share, size: 18,),
+                        SizedBox(width: 8),
+                        Text('Share', style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w500
+                        )),
+                      ],
+                    ),
+                  ),
                 ),
               ),
-            ),
+              SizedBox(width: 10),
+              Padding(
+                padding: const EdgeInsets.only(bottom: 20),
+                child: GestureDetector(
+                  onTap: () {
+                    Get.snackbar('Image Download', 'Image Downloading in progress..', snackPosition: SnackPosition.BOTTOM);
+                    _controller.downloadImage();
+                  },
+                  child: Container(
+                    padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(15),
+                        color: Colors.white
+                    ),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: const [
+                        Icon(Icons.download, size: 18,),
+                        SizedBox(width: 8),
+                        Text('Download', style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.w500
+                        )),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+            ],
           )
         ],
       ),
