@@ -1,6 +1,6 @@
 # photogallery
 
-This flutter project is a Photo Gallery App using GetX State Management.
+This flutter project is a Photo Gallery App using GetX State Management. Photos are fetched using UnSplash API.
 
 Features:
 1. Users have infinite scroll to look and find any images he/she may like.
