@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:photogallery/routes/routes_generator.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
   runApp(const MyApp());
 }
 

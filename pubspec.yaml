@@ -42,9 +42,14 @@ dependencies:
   cached_network_image: ^3.2.0
   share_plus: ^4.0.8
 
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  mocktail: ^0.2.0
+
+dependency_overrides:
+  test_api: 0.4.9
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is

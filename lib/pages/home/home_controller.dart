@@ -22,7 +22,7 @@ class HomeController extends GetxController {
     super.onInit();
   }
 
-  void getAllPhotos() async {
+  Future<void> getAllPhotos() async {
     isLoading.value = true;
     Map<String, String> params = {};
     params['client_id'] = 'CWkDY_ymxHWJYtU121tcXh6SgKS1PSIum3g4obzZKlU';
