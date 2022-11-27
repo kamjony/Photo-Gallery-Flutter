@@ -2,6 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:get/get.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:photogallery/pages/home/home_controller.dart';
 
 class HomeView extends StatelessWidget {
@@ -16,10 +17,10 @@ class HomeView extends StatelessWidget {
           elevation: 5,
           title: const Text('Photo Gallery'),
         ),
-        body: SizedBox(
-            child: Obx(
-          () => !_controller.isLoading.value
-              ? MasonryGridView.count(
+        body: Obx(() => !_controller.isLoading.value
+          ? Stack(
+            children: [
+              MasonryGridView.count(
                   controller: _controller.scrollController,
                   crossAxisCount: 2,
                   mainAxisSpacing: 4,
@@ -36,12 +37,24 @@ class HomeView extends StatelessWidget {
                         },
                         child: CachedNetworkImage(
                           imageUrl: '${_controller.photosList[index].urls!.thumb}',
-                          placeholder: (context, url) => const Center(child: CircularProgressIndicator()),
+                          // placeholder: (context, url) =>
+                          //     const Center(child: CircularProgressIndicator()),
                           errorWidget: (context, url, error) => const Icon(Icons.error),
                         ));
                   },
-                )
-              : const Center(child: CircularProgressIndicator()),
-        )));
+                ),
+              if (_controller.bannerAd.value != null)
+                Align(
+                  alignment: Alignment.topCenter,
+                  child: Container(
+                    width: _controller.bannerAd.value!.size.width.toDouble(),
+                    height: _controller.bannerAd.value!.size.height.toDouble(),
+                    child: AdWidget(ad: _controller.bannerAd.value!),
+                  ),
+                ),
+            ],
+          )
+          : const Center(child: CircularProgressIndicator()),
+        ));
   }
 }

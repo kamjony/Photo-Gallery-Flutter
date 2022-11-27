@@ -41,6 +41,7 @@ dependencies:
   dio_http_cache: ^0.3.0
   cached_network_image: ^3.2.0
   share_plus: ^4.0.8
+  google_mobile_ads: ^2.3.0
 
 
 dev_dependencies:
@@ -49,7 +50,7 @@ dev_dependencies:
   mocktail: ^0.2.0
 
 dependency_overrides:
-  test_api: 0.4.9
+  test_api: ^0.4.9
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
